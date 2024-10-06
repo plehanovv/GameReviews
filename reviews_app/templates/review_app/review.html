@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <div class="container">
+        <div class="columns">
+            <div class="column is-three-quarters">
+                <div class="box forum">
+                    {% with review.tags.all as tags %}
+                    {% if tags %}
+                        {% for t in tags %}
+                        <a href="{{ t.get_absolute_url }}">{{ t.tag }}</a>
+                        {% endfor %}
+                    {% endif %}
+                    {% endwith %}
+                    <p class="text-content">
+                        {{ review.title }}
+                    </p>
+                    {% if review.photo %}
+                    <p><img class="img-article-left" src="{{ review.photo.url }}"></p>
+                    {% endif %}
+                    <div class="media-content">
+                        <h1 class="is-active">
+                            {{ review.content }}
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>>
+{% endblock content %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+<div class="container">
+        <div class="columns">
+            <div class="column is-three-quarters">
+                <div class="box forum">
+                    <p class="text-content">
+                        Profile
+                    </p>
+                    <div class="media-content">
+                        <h1 class="is-active">
+                            <form action="" method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% if user.photo %}
+                                <p><img src="{{ user.photo.url }}"></p>
+                                {% else %}
+                                <p><img src="{{ default_image }}" width="100" ></p>
+                                {% endif %}
+                                <div class="form-error">{{ form.non_field_errors }}</div>
+                                {% for f in form %}
+                                <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+                                <div class="form-error">{{ f.errors }}</div>
+                                </br>
+                                {% endfor %}
+                                {% if not perms.users.social_auth %}
+                                </br>
+                                <p><a href="{% url 'users:password_change' %}">Change password</a></p>
+                                {% endif %}
+                                </br>
+                                <input type="submit" value="Save">
+                            </form>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,5 @@
+{% if tags %}
+    {% for t in tags %}
+        <a href="{{ t.get_absolute_url }}">{{ t.tag }} |&nbsp;</a>
+    {% endfor %}
+{% endif %}

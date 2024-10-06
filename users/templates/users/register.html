@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+<div class="container">
+        <div class="columns">
+            <div class="column is-three-quarters">
+                <div class="box forum">
+                    <p class="text-content">
+                        Registration
+                    </p>
+                    <div class="media-content">
+                        <h1 class="is-active">
+                            <form method="POST">
+                                {% csrf_token %}
+                                <div class="form-error">{{ form.non_field_errors }}</div>
+                                {% for f in form %}
+                                <p><label class="form-label" for="{{ f.id_for_label }}">{{ f.label }}</label>{{ f }}</p>
+                                <div class="form-error">{{ f.errors }}</div>
+                                </br>
+                                {% endfor %}
+                                </br>
+                                <button type="submit">Register</button>
+                            </form>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+{% endblock %}

@@ -1,0 +1,98 @@
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+{% load reviews_app_tags %}
+<div class="container">
+        <div class="columns">
+            <div class="column is-three-quarters">
+                <div class="tabs forum">
+                    <ul>
+                        <li class="is-active"><a>All</a></li>
+                        <li><a>Popular</a></li>
+                    </ul>
+                </div>
+                <div class="box forum">
+                    {% for r in reviews %}
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="image avatar is-64x64">
+                                <img src="{% static 'review_app/img/1.png' %}" alt="Image" class="is-rounded">
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content list-forum">
+                                <div class="is-pulled-right has-text-centered ">
+                                    <a href="#" class="love">
+                                        <span>
+                                    <i class="mdi mdi-heart-outline"></i>
+                                        </span>
+                                    </a>
+                                    <span>15</span>
+                                </div>
+                                <p class="text-content">
+                                    <a href="{{ r.get_absolute_url }}">
+
+                                        {{ r.title }}
+
+                                    <span class="solved" title="Solved">
+                                        <i class="mdi mdi-checkbox-marked-circle"></i>
+                                    </span>
+                                    </a>
+                                </p>
+                                <p class="tags-content">
+                                    <a class="tag is-rounded is-dark">{{ r.cat.name }}</a>
+                                </p>
+                                <p class="info-content">
+                                    <a>
+                                        <i class="mdi mdi-eye-outline"></i>
+                                        <small>100k</small>
+                                    </a>
+                                    <a>
+                                        <i class="mdi mdi-comment-text-multiple-outline"></i>
+                                        <small>70</small>
+                                    </a>
+                                </p>
+                            </div>
+                        </div>
+                    </article>
+                    {% endfor %}
+                </div>
+                <div class="box">
+                    <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
+                        {% if page_obj.has_other_pages %}
+                        {% if page_obj.has_previous %}
+                            <a href='?page={{ page_obj.previous_page_number }}' class="pagination-previous">Previous</a>
+                        {% endif %}
+                        {% if page_obj.has_next %}
+                            <a href='?page={{ page_obj.next_page_number }}' class="pagination-next">Next page</a>
+                        {% endif %}
+                        <ul class="pagination-list">
+                            {% for p in paginator.page_range %}
+                            {% if page_obj.number == p %}
+                                <li><a style="color: #000000; margin: 15px" aria-label="Goto page 1">{{ p }}</a></li>
+                            {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+                                <li><a href='?page={{ p }}' class="pagination-link" aria-label="Goto page 1">{{ p }}</a></li>
+                            {% endif %}
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </nav>
+                </div>
+            </div>
+            <div class="column">
+                <div class="box">
+                    <h5 class="title is-5"># CATEGORIES </h5>
+                        <div class="tags">
+                            {% show_categories %}
+                        </div>
+                    <div class="box">
+                    <h5 class="title is-5"># POPULAR TAGS</h5>
+                        <div class="tags">
+                            {% show_all_tags %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

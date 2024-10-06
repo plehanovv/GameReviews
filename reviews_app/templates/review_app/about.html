@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block content%}
+{% load static %}
+{% load reviews_app_tags %}
+    <div class="container">
+        <div class="columns">
+            <div class="column is-three-quarters">
+                <div class="box forum">
+                    <form action="" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.as_p }}
+                        <input type="submit" value="Отправить">
+                    </form>
+                    <p class="text-content">
+                        О нас
+                    </p>
+                    <div class="media-content">
+                        <h1 class="is-active">Наш сайт занимается обзорами на игры. Здесь вы можете составить подробный обзор для пройденной игры, выставить ей баллы, следить за мнениями других людей. Следите за актуальной информацией и регистрируйтесь в личном кабинете для того, чтобы оставлять обзоры.</h1>
+                    </div>
+                    <br/>
+                    <p class="text-content">
+                        Контакты
+                    </p>
+                    <div class="media-content">
+                        Номер телефона - 82349823439
+                    </div>
+                    <div class="media-content">
+                        Почта - asdadasd23@asdas.ru
+                    </div>
+                    <div class="media-content">
+                        Мы в телеграм - @tme.sdfssdfsdf
+                    </div>
+                    <br/>
+                    <p class="text-content">
+                        Реклама
+                    </p>
+                    <div class="media-content">
+                        По поводу рекламы ывалщывалщзалщыв алщывал ывщалывща лыващз лыво ашыовташщыв оташщывоащышзвало ывщшзалоывщза лывщзалывщал ывщзалывщза лыв щзалывщаывлащз ывлащызвла щывлаывщзал ывщалыв шароывгшарывгшарывгаиывн8а иынаывиа нывиаывнга иыва
+                    </div>
+                </div>
+            </div>
+            <div class="column">
+                <div class="box">
+                    <h5 class="title is-5"># CATEGORIES</h5>
+                    <div class="tags">
+                        {% show_categories %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,3 @@
+{% for cat in cats %}
+<a class="tag is-rounded is-medium is-dark" href="{{ cat.get_absolute_url }}">{{ cat.name }}</a>
+{% endfor %}
