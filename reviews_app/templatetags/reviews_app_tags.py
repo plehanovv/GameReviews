@@ -1,3 +1,4 @@
+import random
 from django import template
 import reviews_app.views as views
 from reviews_app.models import Category, TagReview

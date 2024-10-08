@@ -1,3 +1,4 @@
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.http import HttpResponse
@@ -80,11 +81,10 @@ class GameReviewTags(ListView):
         return context
 
 
-class AddPage(PermissionRequiredMixin, LoginRequiredMixin, DataMixin, CreateView):
+class AddPage(LoginRequiredMixin, DataMixin, CreateView):
     form_class = AddReviewForm
     template_name = 'review_app/addreview.html'
     title_page = 'Add review'
-    permission_required = 'reviews_app.add_gamereview'
     
     def form_valid(self, form):
         w = form.save(commit=False)

@@ -90,7 +90,31 @@
     padding: 0;
     color: #CC0000;
 }
+
 .form-button {
     min-width: 200px;
     font-size: 16px;
 }
+
+.checkbox-option {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.checkbox-option input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    object-fit: cover;
+    transition: transform 0.3s;
+}
+
+.profile-image:hover {
+    transform: scale(1.1);
+    }

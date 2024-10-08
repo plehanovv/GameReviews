@@ -30,6 +30,17 @@ class GameReview(models.Model):
     objects = models.Manager()
     published = PublishedManager()
 
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            slug_base = slugify(self.title)
+            slug = slug_base
+            counter = 1
+            while GameReview.objects.filter(slug=slug).exists():
+                slug = f"{slug_base}-{counter}"
+                counter += 1
+            self.slug = slug
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return str(self.title)
 

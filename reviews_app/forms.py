@@ -1,7 +1,7 @@
 from django import forms
 from django.core.exceptions import ValidationError
-
-from .models import Category, Price, GameReview
+from django.utils.html import format_html
+from .models import Category, Price, GameReview, TagReview
 
 
 class AddReviewForm(forms.ModelForm):
@@ -10,10 +10,10 @@ class AddReviewForm(forms.ModelForm):
 
     class Meta:
         model = GameReview
-        fields = ['title', 'content', 'photo', 'is_published', 'cat', 'price']
+        fields = ['title', 'content', 'photo', 'is_published', 'cat', 'tags', 'price']
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-input'}),
-            'content': forms.Textarea(attrs={'cols': 100, 'rows': 20})
+            'content': forms.Textarea(attrs={'cols': 100, 'rows': 20}),
         }
 
     def clean_title(self):
@@ -26,3 +26,5 @@ class AddReviewForm(forms.ModelForm):
 
 class UploadFileForm(forms.Form):
     file = forms.ImageField(label='Файл')
+
+
