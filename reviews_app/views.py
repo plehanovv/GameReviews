@@ -1,20 +1,11 @@
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404, redirect
-from django.urls import reverse, reverse_lazy
-from django.utils.text import slugify
-from django.views import View
-from django.views.generic import ListView, DetailView, FormView, CreateView, UpdateView
-from unidecode import unidecode
+from django.shortcuts import render, get_object_or_404
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from reviews_app.forms import AddReviewForm, UploadFileForm
 from reviews_app.models import GameReview, Category, TagReview, UploadFiles
 from reviews_app.utils import DataMixin
-
-
-def custom_slugify(value):
-    return slugify(unidecode(value))
 
 
 class GameReviewHome(DataMixin, ListView):

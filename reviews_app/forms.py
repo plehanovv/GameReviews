@@ -1,7 +1,6 @@
 from django import forms
 from django.core.exceptions import ValidationError
-from django.utils.html import format_html
-from .models import Category, Price, GameReview, TagReview
+from .models import Category, Price, GameReview
 
 
 class AddReviewForm(forms.ModelForm):
