@@ -1,5 +1,5 @@
 from pathlib import Path
-
+import django_heroku
 from keys import api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'debug_toolbar.middleware.DebugToolbarMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'gamereviews.urls'
@@ -139,6 +140,8 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static',
 ]
+
+django_heroku.settings(locals())
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
