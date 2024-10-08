@@ -14,12 +14,15 @@ colorama==0.4.6
 cryptography==43.0.1
 decorator==5.1.1
 defusedxml==0.8.0rc2
+dj-database-url==2.2.0
 Django==4.2.16
 django-debug-toolbar==4.4.6
 django-extensions==3.2.3
+django-heroku==0.3.1
 exceptiongroup==1.2.2
 executing==2.1.0
 frozenlist==1.4.1
+gunicorn==23.0.0
 hiredis==3.0.0
 idna==3.7
 ipython==8.18.1
@@ -32,6 +35,7 @@ matplotlib-inline==0.1.7
 mouse==0.7.1
 multidict==6.0.5
 oauthlib==3.2.2
+packaging==24.1
 parso==0.8.4
 pillow==10.4.0
 prompt_toolkit==3.0.47
@@ -61,6 +65,5 @@ Unidecode==1.3.8
 urllib3==2.2.3
 wcwidth==0.2.13
 Werkzeug==3.0.4
+whitenoise==6.7.0
 yarl==1.9.4
-gunicorn==23.0.0
-
